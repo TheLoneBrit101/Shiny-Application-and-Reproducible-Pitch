@@ -1,0 +1,33 @@
+---
+title: "Shiny Application and Reproducible Pitch"
+author: "André Tipping"
+date: "31 March 2019"
+output: html_document
+---
+
+# Overview
+This was built for the course: Developing Data Products as part of the Coursera Data Science Specialization.
+
+The shiny app developed for this assignment is avalilable: 
+https://thelonebrit101.shinyapps.io/Budgeting/
+
+The user must input their annual salary into the box in the sidebar.
+The server will then divide the salary into the following budget groups:
+
+* 50% of your income should go to living expenses and essentials. This includes your rent, utilities, and things like groceries and transportation for work.
+* 20% of your income should go to financial goals, meaning your savings, investments, and debt-reduction payments (if you have debt, such as credit card payments).
+* 30% of your income should be used for flexible spending. This is everything you buy that you want but don't necessarily need (like money spent on movies and travel).
+
+A pie chart will also be produced. 
+
+# Shiny App: Interactive BMI Calculator
+### Sidebar panel
+
+* numericInput: Salary
+
+### Main panel
+
+* Short intro to budgeting and how salary will be divided
+* Calculations on server side
+* Display results
+* Display pie chart

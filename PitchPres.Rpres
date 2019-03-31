@@ -1,0 +1,89 @@
+<style>
+body {
+    overflow: scroll;
+}
+</style>
+
+Reproducible Pitch Presentation
+========================================================
+author: Andre Tipping
+date: 31/03/2019
+autosize: true
+
+
+Introduction
+========================================================
+
+Budgeting can be overwhelming - figuring out how to divide your income to see you through to the next paycheck. Not only do you need to organize, but you also have to make difficult decisions about how to spend your cash. 
+The following app was created to simply take the guesswork out, and to inform you how you should be dividing your income.
+
+- The shiny app developed can be found here:
+https://thelonebrit101.shinyapps.io/Budgeting/
+
+- Source code:
+https://github.com/TheLoneBrit101/Shiny-Application-and-Reproducible-Pitch
+
+Code
+========================================================
+This is a summary of the code found in the server.R file. For the purpose of this presentation, Salary is defined as 30000. 
+
+```{r}
+library(ggplot2)
+
+Salary <- 30000
+
+# Individual groups
+in50 <- function(Salary){
+    (Salary * .5) / 12
+}
+in20 <- function(Salary){
+    (Salary * .2) / 12
+}
+in30 <- function(Salary){
+    (Salary * .3) / 12
+}
+        # For the chart below, the above values are placed in a data.frame
+        df <- data.frame(
+            Type = c("Living", "Financial", "Flex"),
+            value = c(in50(Salary), in20(Salary), in30(Salary)))
+        # Pie chart
+        gg <- ggplot(df, aes(x="", y=value, fill=Type)) +
+            geom_bar(width = 1, stat = "identity") + coord_polar("y", start=0)
+
+```
+</font>
+
+ui.R
+========================================================
+
+```{r eval=FALSE}
+fluidPage(
+  
+  # Application title
+  titlePanel("Bugeting"),
+  
+  # Sidebar with numeric input 
+    sidebarPanel(
+        numericInput('Salary','Insert your annual salary (gross)', 0,min = 0, max = 300000, step = 500)),
+    
+    mainPanel(
+        
+    # Link to pie chart in server
+    plotOutput("pie"),
+    # Individual results displayed for each group
+    p("Living expenses:"), verbatimTextOutput("out50"), tags$br(),
+    p("Including 30% that should go on rent & utilities:"), verbatimTextOutput("rent"), tags$br(),
+    p("Savings:"), verbatimTextOutput("out20"), tags$br(),
+    p("Flex. spending:"), verbatimTextOutput("out30")
+  ))
+
+
+```
+
+Result
+========================================================
+The result looks something like the pie chart below. Of course the values will vary, depending on the salary input. 
+
+```{r}
+plot(gg)
+```

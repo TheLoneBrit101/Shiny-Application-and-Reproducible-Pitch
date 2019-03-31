@@ -9,11 +9,10 @@ shinyUI(fluidPage(
   # Application title
   titlePanel("Bugeting"),
   
-  # Sidebar with a slider input for number of bins 
+  # Sidebar with numeric input 
     sidebarPanel(
         numericInput('Salary','Insert your annual salary (gross)', 0,min = 0, max = 300000, step = 500)),
     
-    # Show a plot of the generated distribution
     mainPanel(
         p("The 50-20-30 Rule helps you build a budget by using three spending categories:"),
         tags$ul(
@@ -24,6 +23,8 @@ shinyUI(fluidPage(
     
     
     h4('Based on your annual salary, you should be spending no more than the following monthly:'),
+    
+    # Pie chart
     plotOutput("pie"),
     
     p("Living expenses:"), verbatimTextOutput("out50"), tags$br(),

@@ -1,9 +1,9 @@
-## Calculate how much of salary should go on rent, compared to average prices per city.
+## Calculate how much of salary should go on rent
 
 library(shiny)
 library(ggplot2)
 
-# Define UI for application that draws a histogram
+# Define UI for application
 shinyUI(fluidPage(
   
   # Application title

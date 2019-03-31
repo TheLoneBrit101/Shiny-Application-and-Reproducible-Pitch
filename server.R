@@ -1,5 +1,4 @@
 library(shiny)
-library(ECharts2Shiny)
 
 
 in50 <- function(Salary){
@@ -12,7 +11,6 @@ in30 <- function(Salary){
     (Salary * .3) / 12
 }
 
-#dat <- data.frame(c(in50, in20, in30))
 
 # Define server logic
 shinyServer(function(input, output) {
@@ -30,9 +28,4 @@ shinyServer(function(input, output) {
      output$out30 <- renderPrint({in30(input$Salary)})
      output$rent <- renderPrint({in30(input$Salary)})
 })
-   
- # output$out50 <- renderPrint({in50(input$Salary)})
- # output$out20 <- renderPrint({in20(input$Salary)})
- # output$out30 <- renderPrint({in30(input$Salary)})
-
 
